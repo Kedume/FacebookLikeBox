@@ -22,7 +22,7 @@
  created in 8 Aug 2012
  by David Alcubierre
  
- Ethernet part based on 'Twitter client with strings' by Tom Igoe (public domain).
+ Ethernet part based on 'Twitter Client' by Tom Igoe (public domain, http://arduino.cc/en/Tutorial/TwitterClient).
  
  This code is in the public domain.
  
@@ -58,9 +58,9 @@ void setup() {
   currentLine.reserve(256);
   fbcount.reserve(100);
 
- // Open serial communications and wait for port to open:
+  // Open serial communications and wait for port to open:
   Serial.begin(9600);
-   while (!Serial) {
+  while (!Serial) {
     ; // wait for serial port to connect. Needed for Leonardo only
   }
 
@@ -133,7 +133,6 @@ void connectToServer() {
   // attempt to connect, and wait a millisecond:
   Serial.println("connecting to server...");
   String content = "";
-  
   if (client.connect(serverName, 80)) {
     Serial.println("making HTTP request...");
     // make HTTP GET request to Facebook:

@@ -132,14 +132,16 @@ void loop()
 void connectToServer() {
   // attempt to connect, and wait a millisecond:
   Serial.println("connecting to server...");
+  String content = "";
+  
   if (client.connect(serverName, 80)) {
     Serial.println("making HTTP request...");
-    // make HTTP GET request to twitter:
+    // make HTTP GET request to Facebook:
     client.println("GET /restserver.php?format=xml&method=fql.multiquery&pretty=0&queries={%22page_info%22%3A%22select%20name%2Cfan_count%2Cpage_url%2Ctype%20from%20page%20where%20page_id%20IN%20(27479046178)%22}&sdk=joey HTTP/1.1");
-    client.println("HOST: api.twitter.com");
+    // declare correct server
+    client.print("HOST: " + content.concat(serverName));
     client.println();
   }
   // note the time of this connect attempt:
   lastAttemptTime = millis();
 }
-
